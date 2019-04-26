@@ -11,8 +11,9 @@ if (!securePage($_SERVER['PHP_SELF'])) {
 
 <?php require_once($abs_us_root.$us_url_root.'users/includes/template/header1_must_include.php'); ?>
 
+
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/superhero/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/material/assets/css/bootstrap.min.css">
 
 <!-- Table Sorting and Such -->
 <link href="<?=$us_url_root?>users/css/datatables.css" rel="stylesheet">
@@ -27,7 +28,7 @@ if (typeof jQuery == 'undefined') {
 }
 </script>
 
-<script src="<?=$us_url_root?>usersc/templates/superhero/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?=$us_url_root?>usersc/templates/material/assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <?php
 //optional
@@ -41,7 +42,7 @@ if (typeof jQuery == 'undefined') {
 
 <!-- This file is a way of allowing the end user to customize stuff -->
 <!-- without getting in the middle of the whole template itself -->
-<?php require_once($abs_us_root.$us_url_root.'usersc/templates/superhero/assets/functions/style.php');?>
+<?php require_once($abs_us_root.$us_url_root.'usersc/templates/material/assets/functions/style.php');?>
 
 <!-- Set your logo and the "header" of the navigation here -->
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -70,12 +71,12 @@ if ($user->isLoggedIn()) {
     // 2nd parameter- true/false for all notifications or only current
 	$notifications = new Notification($user->data()->id, false, $dayLimit);
 }
-require_once($abs_us_root.$us_url_root.'usersc/templates/superhero/assets/functions/nav.php');
+require_once($abs_us_root.$us_url_root.'usersc/templates/material/assets/functions/nav.php');
 }
 
 
  if($settings->navigation_type==1) {
- require_once($abs_us_root.$us_url_root.'usersc/templates/superhero/assets/functions/dbnav.php');
+ require_once($abs_us_root.$us_url_root.'usersc/templates/material/assets/functions/dbnav.php');
 } ?>
 
 
@@ -84,11 +85,8 @@ require_once($abs_us_root.$us_url_root.'usersc/templates/superhero/assets/functi
 </div>
 </div>
 </nav>
-<div class="text-center">
 <?php
-require_once $abs_us_root . $us_url_root . 'usersc/templates/superhero/container_open.php'; //custom template container
-
-require_once $abs_us_root . $us_url_root . 'usersc/templates/superhero/container_open.php'; //custom template container
+require_once $abs_us_root . $us_url_root . 'usersc/templates/material/container_open.php'; //custom template container
 ?>
 
 <main class="container">
@@ -914,8 +912,8 @@ require_once $abs_us_root . $us_url_root . 'usersc/templates/superhero/container
     }, false);
 </script>
 
-<?php require_once $abs_us_root . $us_url_root . 'usersc/templates/superhero/container_close.php'; //custom template container  ?>
+<?php require_once $abs_us_root . $us_url_root . 'usersc/templates/material/container_close.php'; //custom template container  ?>
 
 <?php require_once $abs_us_root . $us_url_root . 'users/includes/page_footer.php'; ?>
 
-<?php require_once $abs_us_root . $us_url_root . 'usersc/templates/superhero/footer.php'; //custom template footer ?>
+<?php require_once $abs_us_root . $us_url_root . 'usersc/templates/material/footer.php'; //custom template footer ?>
