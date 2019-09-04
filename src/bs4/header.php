@@ -24,7 +24,7 @@ if (typeof jQuery == 'undefined') {
 <link href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/hamburgers.min.css" rel="stylesheet">
 <?php
 //optional
-//require_once $abs_us_root.$us_url_root.'usersc/includes/bootstrap_corrections.php'; ?>
+if(file_exists($abs_us_root.$us_url_root.'usersc/templates/'.$settings->template.'.css')){?> <link href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>.css" rel="stylesheet"> <?php } ?>
 
 </head>
 <?php require_once($abs_us_root.$us_url_root.'users/includes/template/header3_must_include.php'); ?>

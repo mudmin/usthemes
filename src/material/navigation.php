@@ -16,7 +16,7 @@ if ($navstyle == 'Default') {
   ?>
   <!-- Set your logo and the "header" of the navigation here -->
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a href="<?= $us_url_root ?>"><img src="<?= $us_url_root ?>users/images/logo.png"></img></a>
+    <a href="<?= $us_url_root ?>"><img src="<?= $us_url_root ?>users/images/logo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -124,7 +124,7 @@ if ($navstyle == 'Default') {
 
       <div class="" style="background-color: #023c73;">
         <div class="text-center">
-          <a style="left:-35px;position: relative;" href="<?= $us_url_root ?>"><img style="" src="<?= $us_url_root ?>users/images/logo.png"></img></a>
+          <a style="left:-35px;position: relative;" href="<?= $us_url_root ?>"><img style="" src="<?= $us_url_root ?>users/images/logo.png"></a>
         </div>
       </div>
     <?php }
@@ -198,7 +198,7 @@ if ($navstyle == 'Default') {
         </button>
         <div class="" style="background-color: #023c73;">
           <div class="text-center">
-            <a style="right:-35px;position: relative;" href="<?= $us_url_root ?>"><img style="" src="<?= $us_url_root ?>users/images/logo.png"></img></a>
+            <a style="right:-35px;position: relative;" href="<?= $us_url_root ?>"><img style="" src="<?= $us_url_root ?>users/images/logo.png"></a>
           </div>
         </div>
       <?php }
