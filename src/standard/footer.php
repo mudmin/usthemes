@@ -27,7 +27,7 @@ $hamburger.on("click", function(e) {
 // ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 </script>
 
-<footer>
+<footer id="footer" style="background-color: transparent;">
 <p align="center">&copy; <?php echo date("Y"); ?> <?=$settings->copyright; ?></p>
 </footer>
 <?php require_once($abs_us_root.$us_url_root.'users/includes/html_footer.php');?>

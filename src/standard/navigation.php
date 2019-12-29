@@ -15,7 +15,7 @@ if (file_exists($abs_us_root . $us_url_root . 'usersc/templates/' . $settings->t
 if ($navstyle == 'Default') {
   ?>
   <!-- Set your logo and the "header" of the navigation here -->
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="margin-bottom:2em;">
     <a href="<?= $us_url_root ?>index.php"><img src="<?= $us_url_root ?>users/images/logo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
