@@ -6,13 +6,13 @@
   <website>https://userspice.com</website>
 
 <!-- the version of the template iteself -->
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 
 <!-- release date of THIS version -->
-  <release>September 4, 2019</release>
+  <release>June 30, 2020</release>
 
 <!-- the last version of UserSpice you tested the template with -->
-  <tested>5.0.x</tested>
+  <tested>5.1.4</tested>
 
 <!-- The next options get a 0 for NO and a 1 for YES -->
 
