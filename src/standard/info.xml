@@ -28,8 +28,8 @@
   <!-- Different looking website navigations. 4 options planned. -->
   <navstyle>Default</navstyle>
 
-<!-- Boostrap 3? Bootstrap 4? HTML5?-->
-  <library>Boostrap 4</library>
+<!-- Bootstrap 3? Bootstrap 4? HTML5?-->
+  <library>Bootstrap 4</library>
 
 <navopts>Default</navopts>
 </template>
