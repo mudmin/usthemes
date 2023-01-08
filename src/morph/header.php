@@ -4,7 +4,7 @@ require_once($abs_us_root.$us_url_root.'usersc/templates/'.$settings->template.'
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/fonts/glyphicons.css">
-<link href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/bootstrap.min.css"  rel="stylesheet"t>
 
 <link href="<?=$us_url_root?>users/css/datatables.css" rel="stylesheet">
 <link href="<?=$us_url_root?>users/css/menu.css" rel="stylesheet">

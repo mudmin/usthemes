@@ -1,0 +1,46 @@
+/* Bootstrap overrides */
+
+/* Make .bg-light work like .card */
+.bg-light {
+	border: 1px rgba(255,255,255,0.2);
+	box-shadow: inset 1px 1px rgba(255, 255, 255, .2),
+		inset -1px -1px rgba(255, 255, 255, .1),
+		1px 3px 24px -1px rgba(0, 0, 0, .15);
+	background-color: transparent !important;
+	background-image: linear-gradient(125deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, .2) 70%);
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+	--bs-secondary-rgb: transparent;
+	border-radius: 0.5rem;
+}
+/* override button colors on .bg-light back to the regular ones */
+.bg-light .btn-primary {
+	background-color: var(--bs-btn-bg);
+}
+.bg-light .btn-primary:hover {
+	background-color: var(--bs-btn-hover-bg);
+}
+.bg-light .btn-primary:active,
+.bg-light .btn-primary:focus {
+	background-color: var(--bs-btn-active-bg);
+}
+.bg-light .btn-warning {
+	background-color: var(--bs-btn-bg);
+}
+.bg-light .btn-warning:hover {
+	background-color: var(--bs-btn-hover-bg);
+}
+.bg-light .btn-warning:active,
+.bg-light .btn-warning:focus {
+	background-color: var(--bs-btn-active-bg);
+}
+.bg-light .btn-info {
+	background-color: var(--bs-btn-bg);
+}
+.bg-light .btn-info:hover {
+	background-color: var(--bs-btn-hover-bg);
+}
+.bg-light .btn-info:active,
+.bg-light .btn-info:focus {
+	background-color: var(--bs-btn-active-bg);
+}
