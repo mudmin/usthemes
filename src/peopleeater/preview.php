@@ -4,8 +4,8 @@ require_once '../../../users/init.php';
 
 
 
-if (!securePage($_SERVER['PHP_SELF'])) {
-    die();
+if (!isset($user) || !hasPerm(2)) {
+    die("You do not have permission to be here");
 }
 $db = DB::getInstance();
 $settings = $db->query("SELECT * FROM settings")->first();

@@ -33,5 +33,19 @@
 <!-- Boostrap 3? Bootstrap 4? HTML5?-->
   <library>Boostrap 5</library>
 
+<!-- Whether the theme meets accessibility guidelines, and if so, which one(s) 
+  Label for this field: "Meets accessibility guidelines:"
+  Options include:
+    - WCAG 2.0 Level A
+    - WCAG 2.1 Level A
+    - WCAG 2.0 Level AA
+    - WCAG 2.1 Level AA
+    - WCAG 2.0 Level AAA
+    - WCAG 2.1 Level AAA
+    - Section 508/Section 255
+    - None
+  -->
+  <accessibility>None</accessibility>
+
 <navopts>Default</navopts>
 </template>
