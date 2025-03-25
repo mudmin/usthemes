@@ -1,6 +1,5 @@
 /* Generated Bootstrap 5 Customizations */
-/* Generated on: 2025-03-02 10:57:52 by The Admin */
-/* Child theme: dashboard */
+/* Generated on: 2025-03-15 06:31:36 by The Admin */
 
 :root {
   /* Userspice */
@@ -271,8 +270,12 @@ body {
   line-height: var(--bs-line-height-base, 1.5);
 }
 
-.form-control, .form-select, .form-check-input, input.form-control, select.form-select, textarea.form-control {
+.form-control, .form-select, input.form-control, select.form-select, textarea.form-control {
   background-color: var(--bs-form-control-bg, var(--bs-body-bg)) !important;
+}
+
+.form-check-input:not(:checked) {
+  background-color: var(--bs-input-bg, var(--bs-body-bg)) !important;
 }
 
 code, pre, kbd, .font-monospace {
@@ -324,19 +327,29 @@ h6, .h6 {
   background-color: var(--bs-card-cap-bg);
 }
 
-.form-control, .form-select, .form-check-input {
+.form-control, .form-select {
   background-color: var(--bs-input-bg, var(--bs-body-bg)) !important;
-  border-color: var(--bs-input-border-color, var(--bs-border-color));
 }
 
 .form-control {
   color: var(--bs-input-color, var(--bs-body-color));
 }
 
+.form-control, .form-select, .form-check-input {
+  border-color: var(--bs-input-border-color, var(--bs-border-color));
+}
+
 .form-control:focus, .form-select:focus, .form-check-input:focus {
   border-color: var(--bs-input-focus-border-color);
   box-shadow: var(--bs-input-focus-box-shadow);
+}
+
+.form-control:focus, .form-select:focus, .form-check-input:focus:not(:checked) {
   background-color: var(--bs-input-focus-bg, var(--bs-form-control-bg)) !important;
+}
+
+.form-check-input:checked:focus {
+  background-color: var(--bs-primary) !important;
 }
 
 .form-control:focus {

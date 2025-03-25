@@ -14,7 +14,10 @@ return [
                 'transparent'      => 'Transparent'
             ],
             'css_rules'   => [
-                '.form-control, .form-select, .form-check-input' => [
+                '.form-control, .form-select' => [
+                    'background-color' => 'var(--bs-input-bg, var(--bs-body-bg)) !important'
+                ],
+                '.form-check-input:not(:checked)' => [
                     'background-color' => 'var(--bs-input-bg, var(--bs-body-bg)) !important'
                 ]
             ]
@@ -84,8 +87,11 @@ return [
             'variable'    => '--bs-input-focus-bg',
             'value'       => '#ffffff',
             'css_rules'   => [
-                '.form-control:focus, .form-select:focus, .form-check-input:focus' => [
+                '.form-control:focus, .form-select:focus, .form-check-input:focus:not(:checked)' => [
                     'background-color' => 'var(--bs-input-focus-bg, var(--bs-form-control-bg)) !important'
+                ],
+                '.form-check-input:checked:focus' => [
+                    'background-color' => 'var(--bs-primary) !important'
                 ]
             ]
         ],

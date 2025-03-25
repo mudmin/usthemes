@@ -37,7 +37,10 @@ return [
             'variable'    => '--bs-form-control-bg',
             'value'       => '#ffffff',
             'css_rules'   => [
-                '.form-control, .form-select, .form-check-input, input.form-control, select.form-select, textarea.form-control' => [
+                '.form-control, .form-select, input.form-control, select.form-select, textarea.form-control' => [
+                    'background-color' => 'var(--bs-form-control-bg, var(--bs-body-bg)) !important'
+                ],
+                '.form-check-input:not(:checked)' => [
                     'background-color' => 'var(--bs-form-control-bg, var(--bs-body-bg)) !important'
                 ]
             ]

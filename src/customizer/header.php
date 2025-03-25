@@ -19,6 +19,13 @@ require_once $abs_us_root . $us_url_root . "users/js/jquery.php";
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <?php
+//if the theme has never been loaded before, it needs to be initialized. We do this so we can distribute it without css files and customizations in place
+if (!file_exists($abs_us_root.$us_url_root.'usersc/templates/'.$settings->template.'/assets/css/customizations.php')) {
+  require_once $abs_us_root.$us_url_root.'usersc/templates/'.$settings->template.'/initialize.php';
+  initializeCustomizerTheme();
+}
+
+
 //set a variable above init.php of $child_theme = filename to load a child theme instead of your core template
 $child_loaded = false;
 if(file_exists($abs_us_root.$us_url_root.'usersc/templates/'.$settings->template.'/assets/css/revision.php')){
