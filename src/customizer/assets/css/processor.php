@@ -63,6 +63,16 @@ if ($usingChildTheme) {
     }
 }
 
+if(isset($customizations['custom-css'])){
+    $customCSS = $customizations['custom-css'];
+    unset($customizations['custom-css']);
+} else {
+    $customCSS = '';
+}
+
+
+
+
 // Start building the CSS output
 $cssOutput = "/* Generated Bootstrap 5 Customizations */\n";
 $cssOutput .= "/* Generated on: " . date('Y-m-d H:i:s') . " by ". $user->data()->fname . " " . $user->data()->lname ." */\n";
@@ -127,10 +137,12 @@ foreach ($templateConfig as $category => $variables) {
 
 // Apply customizations over defaults
 foreach ($customizations as $varName => $value) {
+
     // Handle both forms: with or without the --bs- prefix
     $cleanVarName = str_replace('--bs-', '', $varName);
     $allVariables[$cleanVarName] = $value;
 }
+
 
 // Add RGB variables for each theme color
 $colorVars = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark'];
@@ -149,7 +161,7 @@ foreach ($colorVars as $colorVar) {
 // Output all CSS variables in :root
 foreach ($templateConfig as $category => $variables) {
     // Skip 'component_templates' as it's not for variables
-    if ($category === 'component_templates') continue;
+    if ($category === 'component_templates' || $category === 'custom_css') continue;
     
     $cssOutput .= "  /* " . ucfirst($category) . " */\n";
     
@@ -251,20 +263,14 @@ foreach ($cssRules as $selector => $properties) {
 }
 
 // Finally, add custom CSS if provided (always at the end)
-if (isset($customizations['custom_css']) && 
-    !empty($customizations['custom_css'])) {
-    
-    // Remove any variable declaration from custom CSS
-    $customCSS = $customizations['custom_css'];
-    $customCSS = preg_replace('/--bs-custom-css\s*:/', '', $customCSS);
-    $customCSS = preg_replace('/^\s*body\s*{/', 'body {', $customCSS); // Fix any whitespace
-    
+if (!empty($customCSS)) {
     // Ensure custom CSS is properly formed
     if (trim($customCSS) !== '') {
         $cssOutput .= "\n/* Custom CSS */\n";
-        $cssOutput .= $customCSS . "\n";
+        $cssOutput .= trim($customCSS) . "\n";
     }
 }
+
 
 // Save the CSS file with the current timestamp for cache busting
 $timestamp = date('YmdHis');

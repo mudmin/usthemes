@@ -103,7 +103,7 @@ if (!empty($_POST['load_child_theme'])) {
   if (file_exists($customizationFile)) {
     // Load this theme's customizations directly from the child theme file
     $customizations = require $customizationFile;
-    
+
     // Generate the CSS file with the child theme name parameter
     $_POST['active_child_theme'] = $selectedTheme; // Set this for the processor
     require_once $abs_us_root . $us_url_root . 'usersc/templates/' . $template_override . '/assets/css/processor.php';
@@ -137,7 +137,7 @@ if (!empty($_POST['save_child_theme'])) {
     if ($overwrite) {
       // Get the current form values instead of loading from the regular customization file
       $customizations = [];
-      
+
       // Process all form fields to get current values
       foreach ($templateConfig as $category => $variables) {
         // Skip component_templates as it has a different structure
@@ -147,7 +147,7 @@ if (!empty($_POST['save_child_theme'])) {
           if (isset($set['variable'])) {
             $varName = str_replace('--bs-', '', $set['variable']);
             $inputName = 'var_' . $varName;
-            
+
             // Only include fields that exist in the form
             if (isset($_POST[$inputName])) {
               $customizations[$varName] = Input::get($inputName);
@@ -155,7 +155,7 @@ if (!empty($_POST['save_child_theme'])) {
           }
         }
       }
-      
+
       // Handle special case for custom CSS if it exists
       if (isset($_POST['var_custom_css_code'])) {
         $customizations['custom_css'] = Input::get('var_custom_css_code');
@@ -176,20 +176,22 @@ if (!empty($_POST['save_child_theme'])) {
 
 // Handle reset to defaults
 if (!empty($_POST['reset_defaults'])) {
-  if(isset($_POST['active_child_theme']) && $_POST['active_child_theme'] != ""){
+  if (isset($_POST['active_child_theme']) && $_POST['active_child_theme'] != "") {
 
     $customizationFile = $childThemesDir . '/' . Input::get('active_child_theme') . '.php';
-  }else{
+  } else {
 
     $customizationFile = $abs_us_root . $us_url_root . 'usersc/templates/' . $template_override . '/assets/css/customizations.php';
   }
 
   // Check if customizations file exists and put the default
-/* <?php
+  /* <?php
 return array (
 );
  */
-   if (file_exists($customizationFile)) {    file_put_contents($customizationFile, "<?php\nreturn array (\n);\n"); }
+  if (file_exists($customizationFile)) {
+    file_put_contents($customizationFile, "<?php\nreturn array (\n);\n");
+  }
 
 
   // Generate a new CSS file with default values
@@ -244,7 +246,7 @@ if (!empty($_POST['confirm_overwrite_no'])) {
 if (!empty($_POST['process_css'])) {
   // Load existing customizations based on whether we're in child theme mode or not
   $customizations = [];
-  
+
   if (!empty($_POST['active_child_theme'])) {
     // In child theme mode, load from the child theme file
     $childThemeName = preg_replace('/[^a-zA-Z0-9_]/', '_', Input::get('active_child_theme'));
@@ -278,13 +280,13 @@ if (!empty($_POST['process_css'])) {
 
   // Check if we're in child theme mode
   if (!empty($_POST['active_child_theme'])) {
-  
+
     $childThemeName = preg_replace('/[^a-zA-Z0-9_]/', '_', Input::get('active_child_theme'));
     $childThemeFile = $childThemesDir . '/' . $childThemeName . '.php';
 
     // Save to the child theme file
     file_put_contents($childThemeFile, "<?php\nreturn " . var_export($customizations, true) . ";\n");
-    
+
     $currentChildTheme = $childThemeName;
   } else {
     // Save to the regular customization file when not in child theme mode
@@ -309,7 +311,7 @@ if (isset($_GET['child_theme'])) {
   $currentChildTheme = preg_replace('/[^a-zA-Z0-9_]/', '_', Input::get('child_theme') ?? "");;
   $childThemeMode = true;
   $bannerTheme = "alert-warning";
-}else{
+} else {
   $bannerTheme = "alert-info";
 }
 
@@ -329,9 +331,9 @@ $templateConfig = require $abs_us_root . $us_url_root . 'usersc/templates/' . $t
 
 // Load existing customizations if they exist
 $customizations = [];
-if(isset($child_theme)){
+if (isset($child_theme)) {
   $customizationFile = $childThemesDir . '/' . $child_theme . '.php';
-}else{
+} else {
   $customizationFile = $abs_us_root . $us_url_root . 'usersc/templates/' . $template_override . '/assets/css/customizations.php';
 }
 
@@ -399,7 +401,7 @@ function renderInputField($name, $set)
 
   switch ($set['type']) {
     case 'textarea':
-      echo '<textarea class="form-control" id="' . $inputName . '" name="' . $inputName . '" rows="6" onchange="trackChanges(\'' . $inputName . '\')">' . $value . '</textarea>';
+      echo '<textarea class="form-control" id="' . $inputName . '" name="' . $inputName . '" rows="18" width="100%" onchange="trackChanges(\'' . $inputName . '\')">' . $value . '</textarea>';
       break;
 
     case 'color':
@@ -465,7 +467,7 @@ function renderInputField($name, $set)
   <div class="row">
     <div class="col-12">
       <h1>UserSpice Theme Customizer
-        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#themeExplanationModal">
+        <button type="button" class="btn btn-outline-success how-it-works-button" data-bs-toggle="modal" data-bs-target="#themeExplanationModal">
           <i class="fas fa-question-circle"></i> How it works
         </button>
       </h1>
@@ -485,7 +487,7 @@ function renderInputField($name, $set)
         </div>
       <?php else : ?>
 
-        <div class="alert <?=$bannerTheme?>">
+        <div class="alert <?= $bannerTheme ?>">
           <i class="fas fa-info-circle"></i> Changes will be applied after clicking the "Save CSS" button.
           <?php if ($childThemeMode) : ?>
             <strong>You are currently editing the "<?= htmlspecialchars($currentChildTheme) ?>" child theme.</strong>
@@ -687,32 +689,37 @@ function renderInputField($name, $set)
             <div id="collapse-<?= $category ?>" class="accordion-collapse collapse <?= ($category === 'typography') ? 'show' : '' ?>" aria-labelledby="heading-<?= $category ?>" data-bs-parent="#customizer-accordion">
               <div class="accordion-body">
                 <div class="row">
-                  <?php foreach ($variables as $name => $set) : ?>
-                    <div class="col-md-6 col-lg-4">
-                      <?php renderInputField($name, $set); ?>
-                    </div>
-                  <?php endforeach; ?>
+                  <?php foreach ($variables as $name => $set) :
+                    if ($name == "custom_css_code") { ?>
+                      <div class="col-12">
+                      <?php } else { ?>
+                        <div class="col-md-6 col-lg-4">
+                        <?php } ?>
+
+                        <?php renderInputField($name, $set); ?>
+                        </div>
+                      <?php endforeach; ?>
+                      </div>
                 </div>
               </div>
             </div>
+          <?php endif; ?>
+        <?php endforeach; ?>
           </div>
-        <?php endif; ?>
-      <?php endforeach; ?>
-    </div>
 
-    <div class="d-flex justify-content-between my-4">
-      <div>
-        <button type="submit" name="process_css" value="1" class="btn btn-sm btn-primary">
-          <i class="fas fa-cog"></i> Save CSS
-        </button>
-        <button type="submit" name="reset_defaults" value="1" class="btn btn-sm btn-outline-danger ms-2" onclick="return confirm('Are you sure you want to reset all customizations to default values?');">
-          <i class="fas fa-undo"></i> Reset to Defaults
-        </button>
-      </div>
-      <a href="<?= $us_url_root ?>users/admin.php" class="btn btn-sm btn-secondary">
-        <i class="fas fa-arrow-left"></i> Back to Admin
-      </a>
-    </div>
+          <div class="d-flex justify-content-between my-4">
+            <div>
+              <button type="submit" name="process_css" value="1" class="btn btn-sm btn-primary">
+                <i class="fas fa-cog"></i> Save CSS
+              </button>
+              <button type="submit" name="reset_defaults" value="1" class="btn btn-sm btn-outline-danger ms-2" onclick="return confirm('Are you sure you want to reset all customizations to default values?');">
+                <i class="fas fa-undo"></i> Reset to Defaults
+              </button>
+            </div>
+            <a href="<?= $us_url_root ?>users/admin.php" class="btn btn-sm btn-secondary">
+              <i class="fas fa-arrow-left"></i> Back to Admin
+            </a>
+          </div>
   </form>
 <?php endif; ?>
 </div>
@@ -791,7 +798,7 @@ function renderInputField($name, $set)
 
 <!-- Theme Explanation Modal -->
 <div class="modal fade" id="themeExplanationModal" tabindex="-1" aria-labelledby="themeExplanationModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+<div class="modal-dialog modal-xl wide-modal">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="themeExplanationModalLabel">Understanding the Customizer</h5>
@@ -820,13 +827,35 @@ function renderInputField($name, $set)
         <pre class="bg-light p-3 rounded">$child_theme = "dashboard";
 require_once $abs_us_root . $us_url_root . 'users/includes/template/prep.php';</pre>
 
+        <h5>The UserSpice Menu (UltraMenu)</h5>
+        <p>Please note that each UltraMenu has themes, and you should use the "custom" theme for the backgrounds and colors in the customizer to override your menu properly.</p>
+
+        <h5>Custom CSS</h5>
+        <p>Although there is a section for custom CSS, you can also create a css file <span class='text-success'>usersc/templates/theme_name.css</span> with your own custom css. This has the added benefit of working across child parent and themes.</p>
+
         <h5>Customizing the Customizer</h5>
-        <p>You can add/remove things to the $templateConfig or $customizationFile before they are used in the customizer by creating/editing the <code>usersc/templates/template_customizer_overrides.php</code> file. </p>
+
+        <p>You can add/remove things to the <span class='text-danger'>$templateConfig</span> or <span class='text-danger'>$customizationFile</span> before they are used in the customizer by creating/editing the <code>usersc/templates/template_customizer_overrides.php</code> file. The folder <span class='text-success'>usersc/templates/customizer/assets/css/customizers</span> contains all the individual customizer files that make up the entire system. You can add your own files. The filename determines the order the css is loaded and processed.</p>
 
 
         <h5>Sharing your themes</h5>
         <p>You can share your child themes by sharing both the php and css file with the name of your child theme. To share a customized core template, you will share your custom-bootstrap-xxx.css file as well as the customizations.php file. They will also need to update revision.php so the builder recognizes that css filename. Pro tip, although the ui does not allow you to delete the dashboard child theme (because it's used on the dashboard), you can delete it manually and just create a new child theme called dashboard. </p>
         <p>The revisions.php file allows us to generate new css filenames which automatically break the cache for your users while still allowing the css files to be cached on subsequent loads.</p>
+
+        <h5>Distributing this Theme</h5>
+        <p>If you distribute/modify this code, it is recommended that you release it without the following files.
+        <ul>
+          <li>usersc/templates/customizer/assets/css/revision.php</li>
+          <li>usersc/templates/customizer/assets/css/customizations.php</li>
+          <li>usersc/templates/customizer/assets/css/custom-bootstrap-202xxxxxxxxx.css</li>
+          <li>usersc/templates/customizer/assets/child_themes/dashboard.php</li>
+          <li>usersc/templates/customizer/assets/child_themes/dashboard-202xxxxxxxxx.css</li>
+        </ul>
+
+
+        You can put defaults for these in <span class='text-success'>usersc/templates/customizer/assets/defaults</span> By doing this you will not overwrite anyone's existing files. The first time the template loads without finding usersc/templates/customizer/assets/css/customizations.php It will create a new set of defaults. Otherwise, the existing files will be left alone during the update process.</p>
+
+        If you appreciate this work and would like to make a donation to the author, you can do so at <a href="https://UserSpice.com/donate">https://UserSpice.com/donate</a>. Either way, thanks for using UserSpice!
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -834,6 +863,72 @@ require_once $abs_us_root . $us_url_root . 'users/includes/template/prep.php';</
     </div>
   </div>
 </div>
+
+<style>
+  .how-it-works-button {
+    transition: all 0.5s ease;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .button-highlight {
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.7);
+    transform: scale(1.1, 1);
+    transform-origin: center;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+  }
+
+  .pulse-animation {
+    animation: pulse 1.5s infinite;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wideModals = document.querySelectorAll('.modal-dialog.modal-xl');
+    
+    // Apply the width to each modal
+    wideModals.forEach(function(modal) {
+      modal.style.maxWidth = '95vw';
+      modal.style.width = '95vw';
+    });
+
+    // Get the button
+    const howItWorksButton = document.querySelector('.how-it-works-button');
+
+    // Store original width
+    const originalWidth = howItWorksButton.offsetWidth;
+
+    // Animate after a short delay
+    setTimeout(function() {
+      // Add highlight class - makes button wider
+      howItWorksButton.classList.add('button-highlight');
+
+      // After button expands, add pulsing effect
+      setTimeout(function() {
+        howItWorksButton.classList.add('pulse-animation');
+
+        // Stop pulsing after a few seconds
+        setTimeout(function() {
+          howItWorksButton.classList.remove('pulse-animation');
+        }, 3000);
+      }, 600);
+    }, 800);
+  });
+</script>
 
 
 <?php require_once $abs_us_root . $us_url_root . 'users/includes/html_footer.php'; ?>

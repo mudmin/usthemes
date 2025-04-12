@@ -5,7 +5,7 @@ return [
     'userspice' => [
         'us_menu_custom_bg' => [
             'label'       => 'Custom Menu Background',
-            'description' => 'Background color for custom UserSpice menus',
+            'description' => 'Background color for custom UserSpice menus. Please note that your UltraMenus have themes and you must use the "custom" theme to see these changes.',
             'type'        => 'color',
             'variable'    => '--bs-us-menu-custom-bg',
             'value'       => '#3a5e8c',
