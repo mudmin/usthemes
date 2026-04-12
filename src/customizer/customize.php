@@ -213,14 +213,18 @@ return array (
   $currentActiveTheme = '';
   if (!empty(Input::get('child_theme'))) {
     $currentActiveTheme = Input::get('child_theme');
-  } elseif (!empty($_POST['active_child_theme'])) {
-    $currentActiveTheme = $_POST['active_child_theme'];
+  } elseif (!empty(Input::get('active_child_theme'))) {
+    $currentActiveTheme = Input::get('active_child_theme');
   }
 
   // Keep the child theme loaded but with default values
   if (!empty($currentActiveTheme)) {
     usSuccess("Settings have been reset to default values while maintaining your child theme selection");
-    Redirect::to($us_url_root . 'usersc/templates/' . $template_override . '/customize.php?child_theme=' . urlencode($currentActiveTheme));
+    if (method_exists('Redirect', 'sanitized')) {
+      Redirect::sanitized($us_url_root . 'usersc/templates/' . $template_override . '/customize.php?child_theme=' . urlencode($currentActiveTheme));
+    } else {
+      Redirect::to($us_url_root . 'usersc/templates/' . $template_override . '/customize.php?child_theme=' . urlencode($currentActiveTheme));
+    }
   } else {
     usSuccess("Settings have been reset to default values");
     Redirect::to($us_url_root . 'usersc/templates/' . $template_override . '/customize.php');

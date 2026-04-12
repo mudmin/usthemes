@@ -6,13 +6,13 @@
   <website>https://UserSpice.com</website>
 
 <!-- the version of the template iteself -->
-  <version>2.0.0</version>
+  <version>2.1.0</version>
 
 <!-- release date of THIS version -->
-  <release>March 1, 2026</release>
+  <release>April 12, 2026</release>
 
 <!-- the last version of UserSpice you tested the template with -->
-  <tested>6.0.5</tested>
+  <tested>6.0.8</tested>
 
 <!-- The next options get a 0 for NO and a 1 for YES -->
 <!-- Database Navigation Included -->

@@ -14,11 +14,11 @@ if(!empty($_POST)){
 
 // Check if we're processing for a child theme
 $childThemeName = '';
-if (!empty($_POST['active_child_theme'])) {
+if (!empty(Input::get('active_child_theme'))) {
     // Only use the child theme from POST when explicitly set
-    $childThemeName = preg_replace('/[^a-zA-Z0-9_]/', '_', $_POST['active_child_theme']);
-} elseif (isset($_GET['child_theme']) && $_GET['child_theme'] != '') {
-    $childThemeName = preg_replace('/[^a-zA-Z0-9_]/', '_', $_GET['child_theme']);
+    $childThemeName = preg_replace('/[^a-zA-Z0-9_]/', '_', Input::get('active_child_theme'));
+} elseif (Input::get('child_theme') != '') {
+    $childThemeName = preg_replace('/[^a-zA-Z0-9_]/', '_', Input::get('child_theme'));
 }
 
 $usingChildTheme = !empty($childThemeName);
